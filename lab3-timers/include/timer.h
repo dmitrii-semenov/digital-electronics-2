@@ -59,6 +59,27 @@
 /** @brief Disable overflow interrupt, 0 --> disable */
 #define TIM1_OVF_DISABLE TIMSK1 &= ~(1<<TOIE1);
 
+#define TIM0_STOP      TCCR0B &= ~((1<<CS02) | (1<<CS01) | (1<<CS00));
+#define TIM0_OVF_16US   TCCR0B &= ~((1<<CS02) | (1<<CS01)); TCCR0B |= (1<<CS00);
+#define TIM0_OVF_128US  TCCR0B &= ~((1<<CS02) | (1<<CS00)); TCCR0B |= (1<<CS01);
+#define TIM0_OVF_1MS TCCR0B &= ~(1<<CS02); TCCR0B |= (1<<CS01) | (1<<CS00);
+#define TIM0_OVF_4MS  TCCR0B &= ~((1<<CS01) | (1<<CS00)); TCCR0B |= (1<<CS02);
+#define TIM0_OVF_16MS  TCCR0B &= ~(1<<CS01); TCCR0B |= (1<<CS02) | (1<<CS00);
+#define TIM0_OVF_ENABLE  TIMSK0 |= (1<<TOIE0);
+#define TIM0_OVF_DISABLE TIMSK0 &= ~(1<<TOIE0);
+
+#define TIM2_STOP      TCCR2B &= ~((1<<CS22) | (1<<CS21) | (1<<CS20));
+#define TIM2_OVF_8US   TCCR2B &= ~((1<<CS22) | (1<<CS21)); TCCR2B |= (1<<CS20);
+#define TIM2_OVF_64US  TCCR2B &= ~((1<<CS22) | (1<<CS20)); TCCR2B |= (1<<CS21);
+#define TIM2_OVF_256US TCCR2B &= ~(1<<CS22); TCCR2B |= (1<<CS21) | (1<<CS20);
+#define TIM2_OVF_512US  TCCR2B &= ~((1<<CS21) | (1<<CS20)); TCCR2B |= (1<<CS22);
+#define TIM2_OVF_1024US  TCCR2B &= ~(1<<CS21); TCCR2B |= (1<<CS22) | (1<<CS20);
+#define TIM2_OVF_2048US  TCCR2B &= ~(1<<CS20); TCCR2B |= (1<<CS22) | (1<<CS21);
+#define TIM2_OVF_8192US  TCCR2B |= (1<<CS22) | (1<<CS21) | (1<<CS20);
+
+#define TIM2_OVF_ENABLE  TIMSK2 |= (1<<TOIE2);
+#define TIM2_OVF_DISABLE TIMSK2 &= ~(1<<TOIE2);
+
 
 /**
  * @name  Definitions for 8-bit Timer/Counter0
