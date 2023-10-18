@@ -182,6 +182,8 @@ ISR(TIMER2_OVF_vect)
         lcd_puts("0");
         }
 
+        lcd_gotoxy(11, 0);
+        lcd_puts("    ");
         itoa(seconds_square,str, 10);  // Convert decimal value to string
         lcd_gotoxy(11, 0);
         lcd_puts(str); 
