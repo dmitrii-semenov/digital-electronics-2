@@ -70,9 +70,6 @@ int main(void)
     lcd_puts("b");
 
     lcd_gotoxy(11, 1);
-    lcd_puts("c_");
-
-    lcd_gotoxy(11, 0);
     lcd_putc(0x00);
 
     lcd_gotoxy(6, 0);
@@ -113,8 +110,10 @@ ISR(TIMER2_OVF_vect)
     static uint8_t no_of_overflows = 0;
     static uint8_t tenths = 0;  // Tenths of a second
     static uint8_t seconds = 0;  // Tenths of a second
+    static uint16_t seconds_square = 0;  // Tenths of a second
     static uint8_t minutes = 0;  // Tenths of a second
     char string[2];             // String for converted numbers by itoa()
+    char str[5];             // String for converted numbers by itoa()
 
     no_of_overflows++;
     if (no_of_overflows >= 6)
@@ -129,9 +128,11 @@ ISR(TIMER2_OVF_vect)
         {
           tenths = 0;
           seconds++;
+          seconds_square = seconds*seconds;
           if (seconds >= 60)
           {
             seconds = 0;
+            seconds_square = 0;
             minutes++;
             if (minutes > 99)
             {
@@ -180,6 +181,10 @@ ISR(TIMER2_OVF_vect)
         lcd_gotoxy(1, 0);
         lcd_puts("0");
         }
+
+        itoa(seconds_square,str, 10);  // Convert decimal value to string
+        lcd_gotoxy(11, 0);
+        lcd_puts(str); 
         
 
     }
