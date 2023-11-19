@@ -1,4 +1,3 @@
-# General info
- Hi:) My name is Dima, I am a 3-year undergraduate student at Brno University of technologies. This is my own web for digital electronics 2 cource at BUT
- ## Codes
- Here I will upload my codes from labs and my project in C 
+This repository is for computer exercises in the course Digital Electronics 2 at Brno University of Technology (BUT). As a final project, our team did an "Electricity measuring" circuit in C language with further implementation for the Arduino Uno board. You can find source files and detailed descriptions here:
+
+[Project repository](https://github.com/dmitrii-semenov/measuring_electricity)
